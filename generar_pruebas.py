@@ -18,13 +18,7 @@ def generar_operaciones(n=16, P=10):
         uses = [f'use({random.randint(1,num_news-1)})' for i in range(int(n*0.5))]
         deletes = [f'delete({random.randint(1,num_news-1)})' for i in range(int(n*0.1))]
 
-        # Fusionar las listas
-        instructions.extend(news)
-        uses.extend(deletes)
-        random.shuffle(uses)
-        instructions.extend(uses)
-        instructions.extend(kills)
-        full_instructions.append(instructions)
+        full_instructions = [news, kills, uses, deletes]
 
     # Crear el archivo CSV 
     matriz_a_csv(full_instructions, "pruebas-generadas.csv")
